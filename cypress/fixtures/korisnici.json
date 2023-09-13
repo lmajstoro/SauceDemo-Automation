@@ -1,0 +1,32 @@
+{
+    "korisnici":[
+    {
+        "test" : "Uspjesna prijava",
+        "ime" : "standard_user",
+        "lozinka" : "secret_sauce",
+        "uspjeh" : true,
+        "greska" : null
+    },
+    {
+        "test" : "Neuspjesna prijava zakljucanog korisnika",
+        "ime" : "locked_out_user",
+        "lozinka" : "secret_sauce",
+        "uspjeh" : false,
+        "greska" : "Epic sadface: Sorry, this user has been locked out."
+    },
+    {
+        "test" : "Neuspjesna prijava s krivom lozinkom",
+        "ime" : "standard_user",
+        "lozinka" : "lozinka",
+        "uspjeh" : false,
+        "greska" : "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+        "test" : "Neuspjesna prijava s nepostojecim korisnikom",
+        "ime" : "nepostojeci_korisnik",
+        "lozinka" : "secret_sauce",
+        "uspjeh" : false,
+        "greska" : "Epic sadface: Username and password do not match any user in this service"
+    }
+]
+}
