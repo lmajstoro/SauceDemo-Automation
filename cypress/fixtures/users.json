@@ -1,0 +1,32 @@
+{
+    "users":[
+    {
+        "test_name" : "Succesfull login user",
+        "username" : "standard_user",
+        "password" : "secret_sauce",
+        "success" : true,
+        "error_text" : null
+    },
+    {
+        "test_name" : "Fail login for locked out user",
+        "username" : "locked_out_user",
+        "password" : "secret_sauce",
+        "success" : false,
+        "error_text" : "Epic sadface: Sorry, this user has been locked out."
+    },
+    {
+        "test_name" : "Fail login with incorrect password",
+        "username" : "standard_user",
+        "password" : "lozinka",
+        "success" : false,
+        "error_text" : "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+        "test_name" : "Fail login with non - existing user",
+        "username" : "nepostojeci_korisnik",
+        "password" : "secret_sauce",
+        "success" : false,
+        "error_text" : "Epic sadface: Username and password do not match any user in this service"
+    }
+]
+}

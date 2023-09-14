@@ -1,5 +1,5 @@
 import {prijava} from '../support/utils';
-import korisnik from '../fixtures/podatci_za_prijavu.json'
+import korisnik from '../fixtures/user_login_data.json'
 
 describe('Testing cart', () => {
   beforeEach(() => {

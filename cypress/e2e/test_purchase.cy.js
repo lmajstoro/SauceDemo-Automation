@@ -1,5 +1,5 @@
 import {prijava, kupnja } from '../support/utils';
-import podatci from '../fixtures/podatci_za_kupnju.json';
+import podatci from '../fixtures/user_purchase_data.json';
 
 describe('Testing purchase page', () => {
   beforeEach(() => {
