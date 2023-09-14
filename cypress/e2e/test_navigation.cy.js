@@ -1,32 +1,32 @@
 import { prijava} from '../support/utils';
 import korisnik from '../fixtures/podatci_za_prijavu.json';
 
-describe('Testiranje navigacije', () => {
+describe('Testing navigation', () => {
   beforeEach(() => {
     prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
   });
   
-  it('Navigacija je otvorena klikom na ikonu', () => {
+  it('Click on hamburger icon opens navigation', () => {
     otvori_izbornik()
   });
 
-  it('Navigacija je zatvorena klikom na x', () => {
+  it('Click on "x" icon closes navigation', () => {
     otvori_izbornik()
     pritisni_x()
     cy.get('.bm-menu-wrap').should('have.attr', 'aria-hidden', 'true');
   });
 
-  it('About opcija sadrži poveznicu na saucelabs.com', () => {
+  it('About option contains link to saucelabs.com', () => {
     otvori_izbornik()
     cy.get('#about_sidebar_link').should('have.attr', 'href', 'https://saucelabs.com/')
   });
 
-  it('Logout opcija odjavljuje korisnika', () => {
+  it('Click on logout logs user out', () => {
     pritisni_logout()
     cy.get('.login_wrapper').should('exist')
   });
 
-  it('Košarica je otvorena pritiskom na ikonu košarice', () => {
+  it('Click on cart icon opens cart page', () => {
     cy.pritisni_kosaricu()
     cy.get('#cart_contents_container').should('exist')
   });

@@ -1,49 +1,49 @@
 import { prijava} from '../support/utils';
 import korisnik from '../fixtures/podatci_za_prijavu.json'
 
-describe('Testiranje stranice sevih proizvoda', () => {
+describe('Testing all products page', () => {
   beforeEach(() => {
     prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
   });
 
-  it('Filter "Name A-Z" sortira proizvode po abecedi, uzlazno', () => {
+  it('Filter "Name A-Z" sorts products alphabetically, ascending', () => {
     cy.get('.product_sort_container').select('Name (A to Z)');
     cy.dohvati_sve_artikle().then(artikli => {
       provjeri_poredak_a_z(artikli)
     });
   });
 
-  it('Filter "Name Z-A" sortira proizvode po abecedi, silazno', () => {
+  it('Filter "Name Z-A" sorts products alphabetically, descending', () => {
     cy.get('.product_sort_container').select('Name (Z to A)');
     cy.dohvati_sve_artikle().then(artikli => { 
       provjeri_poredak_z_a(artikli)
     });
   });
 
-  it('Filter "Price (low to high) sortira proizvode po cijeni, uzlazno', () => {
+  it('Filter "Price (low to high) sorts products by price, ascending', () => {
     cy.get('.product_sort_container').select('Price (low to high)');
     cy.dohvati_sve_artikle().then(artikli => {
       provjeri_poredak_manja_veca(artikli)
     });
   });
 
-  it('Filter "Price (high to low)" sortira proizvode po cijeni, silazno', () => {
+  it('Filter "Price (high to low)" sorts products by price, descending', () => {
     cy.get('.product_sort_container').select('Price (high to low)');
     cy.dohvati_sve_artikle().then(artikli => {
       provjeri_poredak_veca_manja(artikli)
     });
   });
 
-  it('Pritisak na proizvod otvara detaljan prikaz proizvoda', () => {
+  it('Click on product opens specific product page', () => {
     cy.contains('Sauce Labs Backpack').click()
     cy.url().should('include', 'inventory-item');
   });
 
-  it('Uspješno dodavanje proizvoda u košaricu i prikaz ikone na košarici', () => {
+  it('Click on "Add to cart" adds product to cart', () => {
     cy.dodaj_proizvod_u_kosaricu()
   });
 
-  it('Uspješno brisanje proizvoda iz košaricu i nestajanje ikone na košarici', () => {
+  it('Click on "Remove" removes product from the cart', () => {
     cy.dodaj_proizvod_u_kosaricu()
     cy.ukloni_proizvod_iz_kosarice()
   });

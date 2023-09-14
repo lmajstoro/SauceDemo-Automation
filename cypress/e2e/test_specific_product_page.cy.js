@@ -1,22 +1,22 @@
 import { prijava} from '../support/utils';
 import korisnik from '../fixtures/podatci_za_prijavu.json'
 
-describe('Testiranje stranice specificnog proizvoda', () => {
+describe('Testing specific product page', () => {
   beforeEach(() => {
     prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
     cy.contains('Sauce Labs Backpack').click()
   });
 
-  it('Pritisak na "Back to products" otvara stranicu svih proizvoda', () => {
+  it('Click on "Back to products" opens all products page', () => {
     cy.get('#back-to-products').click()
     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html');
   });
 
-  it('Uspješno dodavanje proizvoda u košaricu i prikaz ikone na košarici', () => {
+  it('Succesfull adding of product to cart and indicator display on cart icon', () => {
     cy.dodaj_proizvod_u_kosaricu()
   });
 
-  it('Uspješno brisanje proizvoda iz košaricu i nestajanje ikone na košarici', () => {
+  it('Succesfull removing of product to cart and indicator display removed on cart icon', () => {
     cy.dodaj_proizvod_u_kosaricu()
     cy.ukloni_proizvod_iz_kosarice()
   });
