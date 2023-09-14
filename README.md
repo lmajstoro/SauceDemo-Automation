@@ -1,5 +1,6 @@
 # General Info
 Repository holding Cypress code for automating E2E testing on [SauceDemo](https://www.saucedemo.com/)
+
 Project was done as part of Masters Degree Thesis
 
 This repository can be cloned using:

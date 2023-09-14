@@ -1,7 +1,7 @@
 {
     "podatci_za_kupnju":[
     {
-        "test" : "Ispravni podatci za kupnju",
+        "test" : "Succesfull purchase with correct data",
         "ime" : "Luka",
         "prezime" : "Majstorovic",
         "zip" : "1234",
@@ -9,7 +9,7 @@
         "greska" : null
     },
     {
-        "test" : "Unos podataka za kupnju bez imena",
+        "test" : "Fail purchase with first name missing",
         "ime" : null,
         "prezime" : "Majstorovic",
         "zip" : "1234",
@@ -17,7 +17,7 @@
         "greska" : "Error: First Name is required"
     },
     {
-        "test" : "Unos podataka za kupnju bez prezimena",
+        "test" : "Fail purchase with last name missing",
         "ime" : "Luka",
         "prezime" : null,
         "zip" : "1234",
@@ -25,7 +25,7 @@
         "greska" : "Error: Last Name is required"
     },
     {
-        "test" : "Unos podataka za kupnju bez poštanskog broja",
+        "test" : "Fail purchase wtih zip code missing",
         "ime" : "Luka",
         "prezime" : "Majstorovic",
         "zip" : null,
