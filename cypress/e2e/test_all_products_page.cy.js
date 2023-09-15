@@ -1,36 +1,36 @@
-import { login} from '../support/utils';
+import {login} from '../support/utils';
 import user from '../fixtures/user_login_data.json'
 
 describe('Testing all products page', () => {
   beforeEach(() => {
-    login(user.korisnik, user.lozinka, {uspjeh:true})
+    login(user.username, user.password, {uspjeh:true})
   });
 
   it('Filter "Name A-Z" sorts products alphabetically, ascending', () => {
     cy.get('.product_sort_container').select('Name (A to Z)');
-    cy.get_all_products().then(artikli => {
-      provjeri_poredak_a_z(artikli)
+    cy.get_all_products().then(all_products => {
+      check_sorting_a_z(all_products)
     });
   });
 
   it('Filter "Name Z-A" sorts products alphabetically, descending', () => {
     cy.get('.product_sort_container').select('Name (Z to A)');
-    cy.get_all_products().then(artikli => { 
-      provjeri_poredak_z_a(artikli)
+    cy.get_all_products().then(all_products => { 
+      check_sorting_z_a(all_products)
     });
   });
 
   it('Filter "Price (low to high) sorts products by price, ascending', () => {
     cy.get('.product_sort_container').select('Price (low to high)');
-    cy.get_all_products().then(artikli => {
-      provjeri_poredak_manja_veca(artikli)
+    cy.get_all_products().then(all_products => {
+      check_sorting_price_low_high(all_products)
     });
   });
 
   it('Filter "Price (high to low)" sorts products by price, descending', () => {
     cy.get('.product_sort_container').select('Price (high to low)');
-    cy.get_all_products().then(artikli => {
-      provjeri_poredak_veca_manja(artikli)
+    cy.get_all_products().then(all_products => {
+      check_sorting_price_high_low(all_products)
     });
   });
 
@@ -49,48 +49,48 @@ describe('Testing all products page', () => {
   });
 });
 
-function provjeri_poredak_a_z(artikli) {
-  let prethodni = null;
+function check_sorting_a_z(all_products) {
+  let previous = null;
 
-  artikli.forEach((cijena, naziv) => {
-    if (prethodni !== null && naziv < prethodni) {
-      cy.fail(`Artikli nisu abecedno poredani: ${naziv} dolazi poslje ${prethodni}`);
+  all_products.forEach((price, product_title) => {
+    if (previous !== null && product_title < previous) {
+      cy.fail(`Articles are not in alphabetical order: ${product_title} comes before ${previous}`);
     }
-    prethodni = naziv;
+    previous = product_title;
   });
 }
 
-function provjeri_poredak_z_a(artikli) {
-  let prethodni = null;
+function check_sorting_z_a(all_products) {
+  let previous = null;
 
-  artikli.forEach((cijena, naziv) => {
-    if (prethodni !== null && naziv > prethodni) {
-      cy.fail(`Artikli nisu abecedno poredani: ${naziv} dolazi poslje ${prethodni}`);
+  all_products.forEach((price, product_title) => {
+    if (previous !== null && product_title > previous) {
+      cy.fail(`Articles are not in alphabetical order: ${product_title} comes after ${previous}`);
     }
-    prethodni = naziv;
+    previous = product_title;
   });
 }
 
-function provjeri_poredak_manja_veca(artikli) {
-  let prethodni = null;
+function check_sorting_price_low_high(all_products) {
+  let previous = null;
 
-  artikli.forEach((cijena, naziv) => {
-    let cijenaBroj = parseFloat(cijena.replace('$', ''));
-    if (prethodni !== null && cijenaBroj < prethodni) {
-      cy.fail(`Artikli nisu cijenovno poredani: ${cijena} dolazi poslje ${prethodni}`);
+  all_products.forEach((price, product_title) => {
+    let parsed_price = parseFloat(price.replace('$', ''));
+    if (previous !== null && parsed_price < previous) {
+      cy.fail(`Articles are not ordered by price: ${price} comes arter ${previous}`);
     }
-    prethodni = cijenaBroj;
+    previous = parsed_price;
   });
 }
 
-function provjeri_poredak_veca_manja(artikli) {
-  let prethodni = null;
+function check_sorting_price_high_low(all_products) {
+  let previous = null;
 
-  artikli.forEach((cijena, naziv) => {
-    let cijenaBroj = parseFloat(cijena.replace('$', ''));
-    if (prethodni !== null && cijenaBroj > prethodni) {
-      cy.fail(`Artikli nisu cijenovno poredani: ${cijena} dolazi poslje ${prethodni}`);
+  all_products.forEach((price, product_title) => {
+    let parsed_price = parseFloat(price.replace('$', ''));
+    if (previous !== null && parsed_price > previous) {
+      cy.fail(`Articles are not ordered by price: ${price} comes before ${previous}`);
     }
-    prethodni = cijenaBroj;
+    previous = parsed_price;
   });
 }

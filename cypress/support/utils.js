@@ -29,8 +29,8 @@ export const purchase = (first_name, last_name, zip_code, settings = {}) => {
     ;
     cy.get('#continue').click()
   
-    if (!settings.uspjeh) {
-      cy.contains(settings.greska).should('exist');
+    if (!settings.success) {
+      cy.contains(settings.error_text).should('exist');
     } else {
       cy.get('#checkout_summary_container').should('exist');
     }

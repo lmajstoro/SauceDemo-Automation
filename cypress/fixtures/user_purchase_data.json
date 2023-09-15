@@ -1,36 +1,36 @@
 {
-    "podatci_za_kupnju":[
+    "purchase_data":[
     {
-        "test" : "Succesfull purchase with correct data",
-        "ime" : "Luka",
-        "prezime" : "Majstorovic",
-        "zip" : "1234",
-        "uspjeh" : true,
-        "greska" : null
+        "test_name" : "Succesfull purchase with correct data",
+        "first_name" : "Luka",
+        "last_name" : "Majstorovic",
+        "zip_code" : "1234",
+        "success" : true,
+        "error_text" : null
     },
     {
-        "test" : "Fail purchase with first name missing",
-        "ime" : null,
-        "prezime" : "Majstorovic",
-        "zip" : "1234",
-        "uspjeh" : false,
-        "greska" : "Error: First Name is required"
+        "test_name" : "Fail purchase with first name missing",
+        "first_name" : null,
+        "last_name" : "Majstorovic",
+        "zip_code" : "1234",
+        "success" : false,
+        "error_text" : "Error: First Name is required"
     },
     {
-        "test" : "Fail purchase with last name missing",
-        "ime" : "Luka",
-        "prezime" : null,
-        "zip" : "1234",
-        "uspjeh" : false,
-        "greska" : "Error: Last Name is required"
+        "test_name" : "Fail purchase with last name missing",
+        "first_name" : "Luka",
+        "last_name" : null,
+        "zip_code" : "1234",
+        "success" : false,
+        "error_text" : "Error: Last Name is required"
     },
     {
-        "test" : "Fail purchase wtih zip code missing",
-        "ime" : "Luka",
-        "prezime" : "Majstorovic",
-        "zip" : null,
-        "uspjeh" : false,
-        "greska" : "Error: Postal Code is required"
+        "test_name" : "Fail purchase wtih zip_code code missing",
+        "first_name" : "Luka",
+        "last_name" : "Majstorovic",
+        "zip_code" : null,
+        "success" : false,
+        "error_text" : "Error: Postal Code is required"
     }
 ]
 }

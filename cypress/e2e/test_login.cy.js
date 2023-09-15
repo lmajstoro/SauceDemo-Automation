@@ -1,5 +1,5 @@
 import user_info from '../fixtures/users.json';
-import { login } from '../support/utils';
+import {login} from '../support/utils';
 
 describe('Testing user login', () => {
   user_info.users.forEach((user) => {

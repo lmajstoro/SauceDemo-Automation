@@ -1,14 +1,14 @@
-import {login, purchase } from '../support/utils';
+import {login, purchase} from '../support/utils';
 import user from '../fixtures/user_login_data.json'
 
 describe('Testing purchase confirmation page', () => {
   beforeEach(() => {
-    login(user.korisnik, user.lozinka, {uspjeh:true})
+    login(user.username, user.password, {uspjeh:true})
     cy.add_to_cart()
     cy.open_cart()
     cy.get('#checkout').click()
     purchase('Luka', 'Majstorovic', '1234', {
-      uspjeh: true
+      success: true
     })
   });
 
