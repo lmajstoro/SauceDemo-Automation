@@ -1,11 +1,11 @@
-import {prijava} from '../support/utils';
+import {login} from '../support/utils';
 import korisnik from '../fixtures/user_login_data.json'
 
 describe('Testing cart', () => {
   beforeEach(() => {
-    prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
-    cy.dodaj_proizvod_u_kosaricu()
-    cy.pritisni_kosaricu()
+    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    cy.add_to_cart()
+    cy.open_cart()
   });
 
   it('Click on "Continue Shopping" opens all products page', () => {
@@ -19,7 +19,7 @@ describe('Testing cart', () => {
   });
 
   it('Succesfull removing of product from the cart', () => {
-    cy.ukloni_proizvod_iz_kosarice()
+    cy.remove_from_cart()
   });
 
   it('Click on product name opens specific product page', () => {

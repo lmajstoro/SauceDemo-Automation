@@ -1,9 +1,9 @@
-import { prijava} from '../support/utils';
+import { login} from '../support/utils';
 import korisnik from '../fixtures/user_login_data.json'
 
 describe('Testing specific product page', () => {
   beforeEach(() => {
-    prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
     cy.contains('Sauce Labs Backpack').click()
   });
 
@@ -13,11 +13,11 @@ describe('Testing specific product page', () => {
   });
 
   it('Succesfull adding of product to cart and indicator display on cart icon', () => {
-    cy.dodaj_proizvod_u_kosaricu()
+    cy.add_to_cart()
   });
 
   it('Succesfull removing of product to cart and indicator display removed on cart icon', () => {
-    cy.dodaj_proizvod_u_kosaricu()
-    cy.ukloni_proizvod_iz_kosarice()
+    cy.add_to_cart()
+    cy.remove_from_cart()
   });
 });

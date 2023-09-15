@@ -1,9 +1,9 @@
-import { prijava} from '../support/utils';
+import { login} from '../support/utils';
 import korisnik from '../fixtures/user_login_data.json';
 
 describe('Testing navigation', () => {
   beforeEach(() => {
-    prijava(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
   });
   
   it('Click on hamburger icon opens navigation', () => {
@@ -27,7 +27,7 @@ describe('Testing navigation', () => {
   });
 
   it('Click on cart icon opens cart page', () => {
-    cy.pritisni_kosaricu()
+    cy.open_cart()
     cy.get('#cart_contents_container').should('exist')
   });
 });

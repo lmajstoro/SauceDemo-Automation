@@ -1,4 +1,4 @@
-export const prijava = (kor_ime, lozinka, postavke = {}) => {
+export const login = (kor_ime, lozinka, postavke = {}) => {
     cy.visit('/');
     cy.get('#user-name').type(kor_ime);
     cy.get('#password').type(lozinka);
@@ -11,7 +11,7 @@ export const prijava = (kor_ime, lozinka, postavke = {}) => {
     }
   };
 
-export const kupnja = (ime, prezime, zip, postavke = {}) => {
+export const purchase = (ime, prezime, zip, postavke = {}) => {
     if (ime !== null)
     {
       cy.get('#first-name').type(ime, { force: true });
