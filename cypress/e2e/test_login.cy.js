@@ -6,7 +6,7 @@ describe('Testing user login', () => {
     it(`${user.test_name}`, () => {
       login(user.username, user.password, {
         success: user.success,
-        greska: user.error_text,
+        error_text: user.error_text,
       });
     });
   });

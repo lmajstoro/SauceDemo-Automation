@@ -5,7 +5,7 @@ export const login = (username, password, settings = {}) => {
     cy.get('#login-button').click();
   
     if (!settings.success) {
-      cy.contains(settings.greska).should('exist');
+      cy.contains(settings.error_text).should('exist');
     } else {
       cy.get('#inventory_container').should('exist');
     }
