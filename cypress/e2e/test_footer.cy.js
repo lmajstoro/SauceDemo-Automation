@@ -1,9 +1,9 @@
 import { login} from '../support/utils';
-import korisnik from '../fixtures/user_login_data.json'
+import user from '../fixtures/user_login_data.json'
 
 describe('Testing footer', () => {
   beforeEach(() => {
-    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    login(user.korisnik, user.lozinka, {uspjeh:true})
   });
 
   it('Twitter icon contains link to twitter page in new window', () => {

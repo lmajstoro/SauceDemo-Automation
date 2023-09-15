@@ -1,28 +1,28 @@
 import { login} from '../support/utils';
-import korisnik from '../fixtures/user_login_data.json';
+import user from '../fixtures/user_login_data.json';
 
 describe('Testing navigation', () => {
   beforeEach(() => {
-    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    login(user.korisnik, user.lozinka, {uspjeh:true})
   });
   
   it('Click on hamburger icon opens navigation', () => {
-    otvori_izbornik()
+    open_menu()
   });
 
   it('Click on "x" icon closes navigation', () => {
-    otvori_izbornik()
-    pritisni_x()
+    open_menu()
+    close_menu()
     cy.get('.bm-menu-wrap').should('have.attr', 'aria-hidden', 'true');
   });
 
   it('About option contains link to saucelabs.com', () => {
-    otvori_izbornik()
+    open_menu()
     cy.get('#about_sidebar_link').should('have.attr', 'href', 'https://saucelabs.com/')
   });
 
   it('Click on logout logs user out', () => {
-    pritisni_logout()
+    logout_user()
     cy.get('.login_wrapper').should('exist')
   });
 
@@ -32,25 +32,20 @@ describe('Testing navigation', () => {
   });
 });
 
-function otvori_izbornik()
+function open_menu()
 {
-  pritisni_hamburger()
+  cy.get('#react-burger-menu-btn').click()
   cy.get('.bm-menu-wrap').should('have.attr', 'aria-hidden', 'false');
 }
 
-function pritisni_hamburger()
-{
-  cy.get('#react-burger-menu-btn').click()
-}
-
-function pritisni_x()
+function close_menu()
 {
   cy.get('#react-burger-cross-btn').click()
 }
 
-function pritisni_logout()
+function logout_user()
 {
-  otvori_izbornik()
+  open_menu()
   cy.get('#logout_sidebar_link').click()
 }
 

@@ -1,9 +1,9 @@
 import { login} from '../support/utils';
-import korisnik from '../fixtures/user_login_data.json'
+import user from '../fixtures/user_login_data.json'
 
 describe('Testing all products page', () => {
   beforeEach(() => {
-    login(korisnik.korisnik, korisnik.lozinka, {uspjeh:true})
+    login(user.korisnik, user.lozinka, {uspjeh:true})
   });
 
   it('Filter "Name A-Z" sorts products alphabetically, ascending', () => {

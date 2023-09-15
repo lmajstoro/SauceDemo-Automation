@@ -1,15 +1,15 @@
 Cypress.Commands.add("get_all_products", () => {
-    cy.get('.inventory_item').then(artikli => {
-      const mapaArtikala = new Map();
+    cy.get('.inventory_item').then(products => {
+      const product_map = new Map();
   
-      artikli.each((index, artikl) => {
-        const naziv = Cypress.$(artikl).find('.inventory_item_name').text();
-        const cijena = Cypress.$(artikl).find('.inventory_item_price').text();
+      products.each((index, product) => {
+        const product_name = Cypress.$(product).find('.inventory_item_name').text();
+        const product_price = Cypress.$(product).find('.inventory_item_price').text();
   
-        mapaArtikala.set(naziv, cijena);
+        product_map.set(product_name, product_price);
       });
   
-      return mapaArtikala;
+      return product_map;
     });
   });
 

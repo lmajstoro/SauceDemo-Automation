@@ -1,36 +1,36 @@
-export const login = (kor_ime, lozinka, postavke = {}) => {
+export const login = (username, password, settings = {}) => {
     cy.visit('/');
-    cy.get('#user-name').type(kor_ime);
-    cy.get('#password').type(lozinka);
+    cy.get('#user-name').type(username);
+    cy.get('#password').type(password);
     cy.get('#login-button').click();
   
-    if (!postavke.uspjeh) {
-      cy.contains(postavke.greska).should('exist');
+    if (!settings.uspjeh) {
+      cy.contains(settings.greska).should('exist');
     } else {
       cy.get('#inventory_container').should('exist');
     }
   };
 
-export const purchase = (ime, prezime, zip, postavke = {}) => {
-    if (ime !== null)
+export const purchase = (first_name, last_name, zip_code, settings = {}) => {
+    if (first_name !== null)
     {
-      cy.get('#first-name').type(ime, { force: true });
+      cy.get('#first-name').type(first_name, { force: true });
     }
     
-    if (prezime !== null)
+    if (last_name !== null)
     {
-      cy.get('#last-name').type(prezime, { force: true });
+      cy.get('#last-name').type(last_name, { force: true });
     }
     
-    if (zip !== null)
+    if (zip_code !== null)
     {
-      cy.get('#postal-code').type(zip, { force: true })
+      cy.get('#postal-code').type(zip_code, { force: true })
     }
     ;
     cy.get('#continue').click()
   
-    if (!postavke.uspjeh) {
-      cy.contains(postavke.greska).should('exist');
+    if (!settings.uspjeh) {
+      cy.contains(settings.greska).should('exist');
     } else {
       cy.get('#checkout_summary_container').should('exist');
     }
