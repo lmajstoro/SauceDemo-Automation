@@ -4,7 +4,7 @@ export const login = (username, password, settings = {}) => {
     cy.get('#password').type(password);
     cy.get('#login-button').click();
   
-    if (!settings.uspjeh) {
+    if (!settings.success) {
       cy.contains(settings.greska).should('exist');
     } else {
       cy.get('#inventory_container').should('exist');

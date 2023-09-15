@@ -3,7 +3,7 @@ import user from '../fixtures/user_login_data.json'
 
 describe('Testing specific product page', () => {
   beforeEach(() => {
-    login(user.username, user.password, {uspjeh:true})
+    login(user.username, user.password, {success:true})
     cy.contains('Sauce Labs Backpack').click()
   });
 

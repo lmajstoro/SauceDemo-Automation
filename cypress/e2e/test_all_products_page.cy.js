@@ -3,7 +3,7 @@ import user from '../fixtures/user_login_data.json'
 
 describe('Testing all products page', () => {
   beforeEach(() => {
-    login(user.username, user.password, {uspjeh:true})
+    login(user.username, user.password, {success:true})
   });
 
   it('Filter "Name A-Z" sorts products alphabetically, ascending', () => {

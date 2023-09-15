@@ -3,7 +3,7 @@ import purchase_data from '../fixtures/user_purchase_data.json';
 
 describe('Testing purchase page', () => {
   beforeEach(() => {
-    login('standard_user', 'secret_sauce', {uspjeh:true})
+    login('standard_user', 'secret_sauce', {success:true})
     cy.add_to_cart()
     cy.open_cart()
     cy.get('#checkout').click()

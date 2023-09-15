@@ -3,7 +3,7 @@ import user from '../fixtures/user_login_data.json';
 
 describe('Testing navigation', () => {
   beforeEach(() => {
-    login(user.username, user.password, {uspjeh:true})
+    login(user.username, user.password, {success:true})
   });
   
   it('Click on hamburger icon opens navigation', () => {

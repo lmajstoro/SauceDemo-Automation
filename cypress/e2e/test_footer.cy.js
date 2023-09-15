@@ -3,7 +3,7 @@ import user from '../fixtures/user_login_data.json'
 
 describe('Testing footer', () => {
   beforeEach(() => {
-    login(user.username, user.password, {uspjeh:true})
+    login(user.username, user.password, {success:true})
   });
 
   it('Twitter icon contains link to twitter page in new window', () => {
