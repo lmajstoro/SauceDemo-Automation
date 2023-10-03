@@ -21,7 +21,7 @@ npx cypress run
 ```
 To run specific spec:
 ```
-cypress run --spec "cypress/e2e/prijava.cy.js
+cypress run --spec "cypress/e2e/login.cy.js
 ```
 To run tests headed:
 ```
@@ -38,9 +38,9 @@ More run options at:
 # User Info
 SwagLabs offers 3 types of users. Depending on selected user, testing outcome will differ.
 
-Change of user can be done under ```fixtures``` in ```podatci_za_prijavu.json```.
+Change of user can be done under ```fixtures``` in ```login_data.json```.
 
-Changing ```korisnik``` value to one of following will change app behavior, hence test results:
+Changing ```user``` value to one of following will change app behavior, hence test results:
 * ```standard_user``` is user for which app will function as expected
 * ```problem_user``` is user for which app will run with certain erros and issues
 * ```performance_glitch_user``` is user for which app will run with certain performance (Load speed) issues
